@@ -1,0 +1,17 @@
+# 服务配置
+server:
+  port: 8080 # 应用启动端口
+
+# Spring 核心配置
+spring:
+  application:
+    name: base-ai # 应用名称（用于服务注册/日志标识等）
+  # AI 相关配置（适配 Deepseek，兼容 OpenAI API 协议）
+  ai:
+    openai:
+      api-key: sk-8419e265472a4d45aefa7582ef21bb78 # Deepseek 访问密钥
+      base-url: https://api.deepseek.com # Deepseek API 服务地址
+      chat:
+        options:
+          model: deepseek-chat # 聊天模型名称（Deepseek 官方聊天模型）
+          temperature: 0.7 # 生成随机性（0-1，值越高越随机，越低越严谨）

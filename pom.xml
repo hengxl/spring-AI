@@ -13,6 +13,8 @@
     <modules>
         <module>demo01-basis-demo</module>
         <module>demo02-role-preset</module>
+        <module>demo03-define-prompt</module>
+        <module>spring-base</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>
