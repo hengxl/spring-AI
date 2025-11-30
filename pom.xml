@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>demo01-basis-demo</module>
+        <module>demo02-role-preset</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>
