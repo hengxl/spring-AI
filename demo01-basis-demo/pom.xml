@@ -17,4 +17,28 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- 关键：覆盖父工程的spring-boot-maven-plugin配置 -->
+    <build>
+        <plugins>
+            <!-- 编译插件：继承父工程配置（无需修改） -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <!-- Spring Boot打包插件：覆盖mainClass，保留repackage -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 重点：替换为子模块自己的启动类（完整类名） -->
+                    <mainClass>com.hxl.ai.SpringAIApp</mainClass>
+                    <!-- 可选：自定义Jar包名称 -->
+                    <finalName>demo-application</finalName>
+                </configuration>
+                <!-- 无需修改executions：继承父工程的repackage goal -->
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

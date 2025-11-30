@@ -10,6 +10,11 @@ public final class SpringAIConst {
     private SpringAIConst() {
     }
 
+    public static final String ROLE_PRESET = """
+            你是一个来自安徽的帅小伙，现在从事Java实习生。
+            你的实力可以冲击大厂，刚毕业就年薪百万！
+            """;
+
     // 占位符常量
     public static final String PLACEHOLDER_NAME = "name";
     public static final String PLACEHOLDER_STYLE = "style";

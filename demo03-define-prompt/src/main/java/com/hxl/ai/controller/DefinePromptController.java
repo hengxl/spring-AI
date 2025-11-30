@@ -1,12 +1,12 @@
 package com.hxl.ai.controller;
 
 import com.hxl.ai.constant.SpringAIConst;
+import jakarta.annotation.Resource;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.Message;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +22,7 @@ import java.util.Map;
 @RestController
 public class DefinePromptController {
 
-    @Autowired
+    @Resource(name = "chatClientOne")
     private ChatClient chatClient;
 
     @GetMapping(value = "/chat", produces = "text/html;charset=UTF-8")

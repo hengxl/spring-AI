@@ -14,7 +14,7 @@ import reactor.core.publisher.Flux;
 @RestController
 public class RolePresetController {
 
-    @Resource
+    @Resource(name = "chatClientTwo")
     private ChatClient client;
 
     @GetMapping("/chat")
