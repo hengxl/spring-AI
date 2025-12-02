@@ -25,26 +25,12 @@
         </dependency>
     </dependencies>
 
-    <!-- 关键：覆盖父工程的spring-boot-maven-plugin配置 -->
+    <!-- TODO: SpringBoot 打包重写功能，它能将子模块的类文件打包进当前模块的 JAR 中 -->
     <build>
         <plugins>
-            <!-- 编译插件：继承父工程配置（无需修改） -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-
-            <!-- Spring Boot打包插件：覆盖mainClass，保留repackage -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!-- 重点：替换为子模块自己的启动类（完整类名） -->
-                    <mainClass>com.hxl.ai.DefinePrompt</mainClass>
-                    <!-- 可选：自定义Jar包名称 -->
-                    <finalName>demo-application</finalName>
-                </configuration>
-                <!-- 无需修改executions：继承父工程的repackage goal -->
             </plugin>
         </plugins>
     </build>

@@ -30,6 +30,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- 版本管理 -->
+        <spring-boot.version>3.3.13</spring-boot.version>
         <spring-ai.version>1.1.0</spring-ai.version>
         <plugin.maven-compiler.version>3.11.0</plugin.maven-compiler.version>
         <plugin.spring-boot.version>3.2.8</plugin.spring-boot.version>
@@ -66,76 +67,26 @@
         </dependency>
     </dependencies>
 
+    <!-- TODO: 插件管理（统一构建插件版本） -->
     <build>
-        <!-- 资源文件配置 -->
-        <resources>
-            <!-- Java源码中的配置文件 -->
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.yml</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-            <!-- resources目录资源 -->
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
-
-        <!-- 插件版本管理：子模块继承 -->
         <pluginManagement>
             <plugins>
-                <!-- 编译插件 -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${plugin.maven-compiler.version}</version>
-                    <configuration>
-                        <source>17</source> <!-- 指定编译用的Java版本（源码版本） -->
-                        <target>17</target> <!-- 指定编译后字节码兼容的Java版本 -->
-                        <encoding>${project.build.sourceEncoding}</encoding> <!-- 编译编码，避免中文乱码 -->
-                        <release>17</release>
-                    </configuration>
-                </plugin>
-
-                <!-- Spring Boot打包插件 -->
+                <!-- Spring Boot Maven插件 -->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${plugin.spring-boot.version}</version>
+                    <version>${spring-boot.version}</version>
                     <configuration>
-                        <!-- TODO: 子模块需覆盖此主类 -->
-                        <mainClass>com.hxl.design.pattern.DesignPatternApplication</mainClass>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
                     </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal> <!-- 打包为可执行JAR -->
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
-
-        <!-- 默认激活插件 -->
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
     </build>
 
 </project>
